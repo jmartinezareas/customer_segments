@@ -11804,7 +11804,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="prompt input_prompt">In&nbsp;[1]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># Import libraries necessary for this project</span>
@@ -11863,7 +11863,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[3]:</div>
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># Display a description of the dataset</span>
@@ -12006,11 +12006,11 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># TODO: Select three indices of your choice you wish to sample from the dataset</span>
-<span class="n">indices</span> <span class="o">=</span> <span class="p">[</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">440</span><span class="p">)</span> <span class="k">for</span> <span class="n">num</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">)]</span>
+<span class="n">indices</span> <span class="o">=</span> <span class="p">[</span><span class="mi">381</span><span class="p">,</span><span class="mi">240</span><span class="p">,</span><span class="mi">42</span><span class="p">]</span>
 <span class="k">print</span> <span class="p">(</span><span class="n">indices</span><span class="p">)</span>
 
 <span class="c1"># Create a DataFrame of the chosen samples</span>
@@ -12177,7 +12177,7 @@ Chosen samples of wholesale customers dataset:
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
@@ -12215,7 +12215,7 @@ Chosen samples of wholesale customers dataset:
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>-0.18073783098
+<pre>-0.318160789392
 </pre>
 </div>
 </div>
@@ -12245,7 +12245,8 @@ Chosen samples of wholesale customers dataset:
 <p><strong>Answer:</strong></p>
 <ul>
 <li>We attempted predicting the 'Fresh' feature and reported a negative coefficient of determination. </li>
-<li>This is not engour for identifying customers' spending habits as we require at least a score between 0 and 1.</li>
+<li>This is not enough for identifying customers' spending habits as we require at least a score between 0 and 1.</li>
+<li>This feature contains unique information that is not captured by the rest of the features, making it redundant. Calculating the mean of all the values for 'Fresh' will even return a better prediction than a model that considers the rest of features.</li>
 </ul>
 
 </div>
@@ -12262,7 +12263,7 @@ Chosen samples of wholesale customers dataset:
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[7]:</div>
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># Produce a scatter matrix for each pair of features in the data</span>
@@ -12329,14 +12330,14 @@ Chosen samples of wholesale customers dataset:
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer:</strong></p>
 <ul>
-<li>The distribution of the data set is normal however highly skewed to left. A great deal of this data points are near 0, this could be a symptom of outliers. </li>
-<li>The following featueres exhibit some form of correlation.<ul>
-<li>'Grocery' and 'Milk'</li>
-<li>'Detergents_paper' and 'Milk'</li>
-<li>'Detergents_paper' and 'Grocery'</li>
+<li>The distribution of the data set is normal however highly skewed to right. A great deal of this data points are near 0, this could be a symptom of outliers. </li>
+<li>The following features exhibit some form of correlation.<ul>
+<li>'Grocery' vs 'Milk'</li>
+<li>'Detergents_paper' vs 'Milk'</li>
+<li>'Detergents_paper' vs 'Grocery'</li>
 </ul>
 </li>
-<li>These graphs highly confirm my conclusions about the relevance of the 'Fresh' features since as it can be seen on the first column where the data points show no releation with any of the other features. In other words we can't easily claim the following ' as more/less Fresh is purchased we will have more/less items purchase for any other given feature'. </li>
+<li>The charts confirm that the feature 'Fresh' is rendundant and not relevant. This is clearly visible as it shows no correlation (either negative or positive) against all the other different type of purchases.</li>
 </ul>
 
 </div>
@@ -12367,7 +12368,7 @@ Chosen samples of wholesale customers dataset:
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[8]:</div>
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># TODO: Scale the data using the natural logarithm</span>
@@ -12431,7 +12432,7 @@ Chosen samples of wholesale customers dataset:
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[9]:</div>
+<div class="prompt input_prompt">In&nbsp;[8]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># Display the log-transformed sample data</span>
@@ -12538,10 +12539,11 @@ Once you have performed this implementation, the dataset will be stored in the v
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[10]:</div>
+<div class="prompt input_prompt">In&nbsp;[13]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="n">outliers_prelimlist</span> <span class="o">=</span> <span class="p">[]</span>
+<div class=" highlight hl-ipython2"><pre><span></span><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Counter</span>
+<span class="n">outliers_prelimlist</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="c1"># For each feature find the data points with extreme high or low values</span>
 <span class="k">for</span> <span class="n">feature</span> <span class="ow">in</span> <span class="n">log_data</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
     
@@ -12564,6 +12566,12 @@ Once you have performed this implementation, the dataset will be stored in the v
 
 <span class="c1"># OPTIONAL: Select the indices for data points you wish to remove</span>
 <span class="n">outliers</span>  <span class="o">=</span> <span class="n">outliers_prelimlist</span>
+
+<span class="n">cnt</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">index</span> <span class="ow">in</span> <span class="n">outliers</span><span class="p">:</span>
+    <span class="n">cnt</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+    
+<span class="k">print</span> <span class="p">(</span><span class="n">cnt</span><span class="p">)</span>
 
 <span class="c1">#Remove the outliers, if any were specified</span>
 <span class="n">good_data</span> <span class="o">=</span> <span class="n">log_data</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">log_data</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="n">outliers</span><span class="p">])</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span> <span class="o">=</span> <span class="bp">True</span><span class="p">)</span>
@@ -13321,6 +13329,17 @@ Once you have performed this implementation, the dataset will be stored in the v
 
 </div>
 
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Counter({154L: 3, 128L: 2, 65L: 2, 66L: 2, 75L: 2, 193L: 1, 264L: 1, 137L: 1, 142L: 1, 145L: 1, 412L: 1, 285L: 1, 161L: 1, 420L: 1, 38L: 1, 171L: 1, 429L: 1, 175L: 1, 304L: 1, 305L: 1, 439L: 1, 184L: 1, 57L: 1, 187L: 1, 203L: 1, 325L: 1, 289L: 1, 81L: 1, 338L: 1, 86L: 1, 343L: 1, 218L: 1, 95L: 1, 96L: 1, 353L: 1, 98L: 1, 355L: 1, 356L: 1, 357L: 1, 233L: 1, 109L: 1, 183L: 1})
+</pre>
+</div>
+</div>
+
 </div>
 </div>
 
@@ -13345,9 +13364,8 @@ Once you have performed this implementation, the dataset will be stored in the v
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer:</strong></p>
 <ul>
-<li>There are datapoints that could be considered outliers from more than one feature. For example data point #154</li>
-<li>Probably removing these datapoints from the dataset is not the wisest idea. However for an initial analysis this could be considered an option to reduce the noise.</li>
-<li>As mentioned previously, having outliers could increase the noise in the data and will eventually affect any other analysis for example when generating clusters. </li>
+<li>The following data points are repeated, meaning they appear in one that more feature. #154, #128, #65, #66 and #75.</li>
+<li>K-Means clustering gives relevance to outliers due to its sum of squares optimization algorithm. In this circumstance removing outliers is the right decision.</li>
 </ul>
 
 </div>
@@ -13441,11 +13459,13 @@ Once you have performed this implementation, the dataset will be stored in the v
 <ul>
 <li>For the first and second principal components there is a 0.7252 explained variance. </li>
 <li>For the first principal components there is a total of 0.9276 explained variance.</li>
-<li>Dimensions important points - Higher positived weighted features means that purchasing one of them will increase the likeliness of another positive weight feature being purchased in accordance to their weight. As for those with negative-weighted it mainly represents the degrees of unrelateness. Each dimension also will be as important as it explained variance.<ul>
+<li>Dimensions important points - Higher positive weighted features means that purchasing one of them will increase the likeliness of another positive weight feature being purchased in accordance to their weight. As for those with negative-weighted it mainly represents the degrees of unrelateness. Each dimension also will be as important as it explained variance.</li>
+<li>Positive or Negative weighted features translates to a <strong>directly propotional</strong> purchase compared to other feature of the <strong>same</strong> sign. </li>
+<li>Positive or Negative weighted features translates to an <strong>inversily propotional</strong> purchase compared to other feature of the <strong>opposite</strong> sign.<ul>
 <li>Dimension 1: Highest explained variance meaning that 'Milk', 'Grocery' and 'Detergents_paper' are highly correlated and have the biggest impact over the whole dataset.</li>
-<li>Dimension 2: Second highest explained variance however less thatn half compared to dimension 1. 'Frozen', 'Fresh' and 'Delicatessen' are the most correlated features.</li>
-<li>Dimension 3: Half the explained variance from dimension 2. 'Delicatessen', 'Frozen' and 'Milk' are the most correlated features.</li>
-<li>Dimension 4: Simliar explained variance from dimension 3 . 'Delicatessen', 'Fresh' and 'Milk' are the most correlated features.</li>
+<li>Dimension 2: Second highest explained variance however less than half compared to dimension 1. 'Frozen', 'Fresh' and 'Delicatessen' are the most correlated features.</li>
+<li>Dimension 3: Half the explained variance from dimension 2. Dominant features are 'Fresh' and 'Detergents_Paper' and the more spending involved on the latter will relate to a higher spending to 'Fresh' than the opposite ('Fresh' over 'Detergents_Paper')</li>
+<li>Dimension 4: Simliar explained variance from dimension 3. Dominant features are 'Frozen' and 'Detergents_Paper' and the more spending involved on the latter will relate to a higher spending to 'Frozen' than the opposite ('Frozen' over 'Detergents_Paper')</li>
 </ul>
 </li>
 </ul>
@@ -14255,7 +14275,12 @@ Sample point 2 predicted to be in Cluster 0
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer:</strong></p>
 <ul>
-<li>By identifying the customers from an specific segment. Running tests and measuring its reactiveness (comparing actual purchases to those in the past) to changing deliverying schedules for a only a sample of that segment. Effectively not all customer will react equally.</li>
+<li>The wholesale distributor may run an A/B test against the hypothesis "Changing delivery times will generate a positive reaction from the customers?" <ol>
+<li>Select a sample from both segments previously defined. It needs to be a random sample.</li>
+<li>Define a control and variation group from each segment sample. The control and variation groups need to be as equally as possible and standardized and formal tests can be used to measure this property. A total of two tests are required, one per segment.</li>
+<li>Analyze test data and determine if the hypothesis can be accepted for each of the segments by previously defining a metric for example: purchases per transaction.</li>
+</ol>
+</li>
 </ul>
 
 </div>
